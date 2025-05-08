@@ -11,12 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SolicitacaoValidacao {
 
-    private String imagemBase64; // Imagem em base64
-    private String tipoBiometria; // Tipo de biometria (facial, digital)
-    private String tipoDocumento; // Tipo de documento (RG, CPF, etc.)
-    private LocalDateTime dataCaptura; // Data da captura
-    private DispositivoDTO dispositivo; // Informações do dispositivo
+    private String imagemBase64;
+    private String tipoBiometria;
+    private String tipoDocumento;
+    private LocalDateTime dataCaptura;
+    private DispositivoDTO dispositivo;
     private Metadados metadados;
+    private Boolean biometriaValida;
 
     
 }

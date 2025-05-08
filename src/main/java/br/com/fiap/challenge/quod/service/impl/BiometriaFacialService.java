@@ -24,7 +24,7 @@ public class BiometriaFacialService implements ValidacaoImagemService {
 
         try {
             byte[] decoded = Base64.getDecoder().decode(imagemBase64);
-            return decoded.length > 10000; // Simula tamanho mínimo
+            return decoded.length > 10000;
         } catch (IllegalArgumentException e) {
             return false;
         }
