@@ -4,6 +4,7 @@ import br.com.fiap.challenge.quod.dto.SolicitacaoValidacao;
 import br.com.fiap.challenge.quod.dto.ResultadoValidacao;
 import br.com.fiap.challenge.quod.service.ValidacaoImagemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,6 @@ public class BiometriaDigitalController {
         resultado.setTipoFraude(tipoFraude);
         resultado.setMensagem(valido ? "Validação bem-sucedida" : "Erro na validação");
 
-        return ResponseEntity.ok(resultado);
+        return new ResponseEntity<ResultadoValidacao>(resultado, HttpStatus.OK);
     }
 }
