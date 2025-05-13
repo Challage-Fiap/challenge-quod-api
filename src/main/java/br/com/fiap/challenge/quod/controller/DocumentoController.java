@@ -1,18 +1,22 @@
 package br.com.fiap.challenge.quod.controller;
 
-import br.com.fiap.challenge.quod.dto.SolicitacaoValidacao;
-import br.com.fiap.challenge.quod.dto.ResultadoValidacao;
-import br.com.fiap.challenge.quod.service.ValidacaoImagemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.fiap.challenge.quod.dto.ResultadoValidacao;
+import br.com.fiap.challenge.quod.dto.SolicitacaoValidacao;
+import br.com.fiap.challenge.quod.service.DocumentoService;
 
 @RestController
 @RequestMapping("/api/validacao/documento")
 public class DocumentoController {
 
     @Autowired
-    private ValidacaoImagemService documentoService;
+    private DocumentoService documentoService;
 
     @PostMapping("/validar")
     public ResponseEntity<ResultadoValidacao> validarDocumento(@RequestBody SolicitacaoValidacao solicitacao) {

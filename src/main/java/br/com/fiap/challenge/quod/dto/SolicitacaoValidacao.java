@@ -16,7 +16,7 @@ public class SolicitacaoValidacao {
     private String tipoDocumento;
     private LocalDateTime dataCaptura;
     private DispositivoDTO dispositivo;
-    private Metadados metadados;
+    private MetadadosDTO metadados;
     private Boolean biometriaValida;
 
     

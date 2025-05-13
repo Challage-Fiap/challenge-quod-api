@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.challenge.quod.dto.ResultadoValidacao;
 import br.com.fiap.challenge.quod.dto.SolicitacaoValidacao;
-import br.com.fiap.challenge.quod.service.impl.BiometriaFacialService;
+import br.com.fiap.challenge.quod.service.BiometriaFacialService;
 
 @RestController
 @RequestMapping("/api/validacao/facial")

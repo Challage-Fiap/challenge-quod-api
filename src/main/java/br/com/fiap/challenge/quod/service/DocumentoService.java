@@ -1,15 +1,12 @@
-package br.com.fiap.challenge.quod.service.impl;
+package br.com.fiap.challenge.quod.service;
 
 import java.util.Base64;
 
 import org.springframework.stereotype.Service;
 
-import br.com.fiap.challenge.quod.service.ValidacaoImagemService;
-
 @Service
-public class DocumentoService implements ValidacaoImagemService {
+public class DocumentoService {
 
-    @Override
     public boolean validarImagemBase(String imagemBase64) {
         if (imagemBase64 == null || imagemBase64.isEmpty()) return false;
 
@@ -21,7 +18,6 @@ public class DocumentoService implements ValidacaoImagemService {
         }
     }
 
-    @Override
     public boolean simularFraude(String imagemBase64) {
         return imagemBase64.contains("documento_fake") || imagemBase64.contains("mask_overlay");
     }

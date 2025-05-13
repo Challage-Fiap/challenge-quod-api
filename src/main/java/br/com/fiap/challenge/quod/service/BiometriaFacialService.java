@@ -1,24 +1,23 @@
-package br.com.fiap.challenge.quod.service.impl;
+package br.com.fiap.challenge.quod.service;
 
-
-import br.com.fiap.challenge.quod.dto.SolicitacaoValidacao;
-import br.com.fiap.challenge.quod.dto.ResultadoValidacao;
-import br.com.fiap.challenge.quod.model.Validacao;
-import br.com.fiap.challenge.quod.reposiroy.ValidacaoRepository;
-import br.com.fiap.challenge.quod.service.ValidacaoImagemService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Base64;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.fiap.challenge.quod.dto.ResultadoValidacao;
+import br.com.fiap.challenge.quod.dto.SolicitacaoValidacao;
+import br.com.fiap.challenge.quod.model.Validacao;
+import br.com.fiap.challenge.quod.reposiroy.ValidacaoRepository;
+
 @Service
-public class BiometriaFacialService implements ValidacaoImagemService {
+public class BiometriaFacialService {
 
     @Autowired
     private ValidacaoRepository validacaoRepository;
 
-    @Override
     public boolean validarImagemBase(String imagemBase64) {
         if (imagemBase64 == null || imagemBase64.isEmpty()) return false;
 
@@ -30,7 +29,6 @@ public class BiometriaFacialService implements ValidacaoImagemService {
         }
     }
 
-    @Override
     public boolean simularFraude(String imagemBase64) {
         return imagemBase64.contains("deepfake") || imagemBase64.contains("foto_falsa");
     }
@@ -45,13 +43,11 @@ public class BiometriaFacialService implements ValidacaoImagemService {
             tipoFraude = simularFraude(solicitacao.getImagemBase64()) ? "Fraude detectada" : null;
         }
 
-        // Criando o objeto de resultado
         ResultadoValidacao resultado = new ResultadoValidacao();
         resultado.setValido(valido);
         resultado.setTipoFraude(tipoFraude);
         resultado.setMensagem(valido ? "Validação bem-sucedida" : "Erro na validação");
 
-        // Persistindo a validação no MongoDB
         Validacao validacao = new Validacao(
                 "facial",
                 solicitacao.getImagemBase64(),

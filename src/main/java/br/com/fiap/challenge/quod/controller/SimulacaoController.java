@@ -15,10 +15,7 @@ public class SimulacaoController {
 
     @PostMapping("/envio-fraude")
     public ResponseEntity<String> simularEnvioFraude(@RequestBody NotificacaoFraudeDTO notificacaoFraudeDTO) {
-        // Chama o serviço para simular o envio da notificação de fraude para o sistema da QUOD
         String resultado = simulacaoEnvioQUODService.simularEnvioNotificacao(notificacaoFraudeDTO);
-
-        // Retorna o resultado da simulação
         return ResponseEntity.ok(resultado);
     }
 }
